@@ -62,6 +62,8 @@ class Social_info(models.Model):
 
     def __str__(self):
         return f'Social Info'
+    
+    
 
     
 

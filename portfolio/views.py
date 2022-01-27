@@ -23,8 +23,9 @@ def home_view(request):
 
     
     fullname = user_info.Fullname
+    Cv = user_info.Curriculum_vitae
     
-    context = {'color':color, 'fullname':fullname}
+    context = {'color':color, 'fullname':fullname, 'Cv':Cv}
     return render(request, "Homepages/index.html", context)
 
 
