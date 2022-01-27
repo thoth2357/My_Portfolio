@@ -74,41 +74,17 @@
                     </div>
                 </div>
 
-                <!-- section begin -->
-                <section id="section-home" aria-label="section" class="full-height no-top no-bottom text-light" data-bgimage="url({{personlization_info.Background_picture.url}})">
-					{% if personlization_info.Animation %}  
-                        <div id="particles-js"></div>
-                    {% else %}{% endif %}
-                    
-                    <div class="overlay-bg t50">
-                        <div class="middle">
-                            <div class="container">
-                                <div class="row">
-                                    <div class="col-md-12 text-center">
-                                        <p class="lead"><span class="id-color">Hi, welcome to my personal website.</span></p>
-                                        <div class="spacer20"></div>
-                                        <div class="h1_big">My name {{user_info.Fullname}}, a
-                                            <br> {{user_info.City}} based
-                                            
-                                            <div class="typed-strings">
-                                            {% for item in profession %}{% spaceless %}<p>{{item}}<p/>{% endspaceless %}{% endfor %}
-                                            </div>
-                                            <div class="typed"></div>
-                                        </div>
-                                        <div class="spacer60"></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                <!-- section Home begin -->
+                {% include "Homepages/section_home.html" %}
+                <!-- section Home close -->
+                
+                
+                <!-- section Services begin -->
+                
+                <!-- section Services close -->
 
-                    <a href="#section-services" class="scroll-to">
-                        <span class="arrow bounce">
-							<i class="arrow_up"></i>
-                        </span>
-                    </a>
-                </section>
-                <!-- section close -->
+
+
 {% endblock content %}
 
 {% block script %}
