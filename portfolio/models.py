@@ -7,7 +7,7 @@ from phonenumber_field.modelfields import PhoneNumberField
 
 # Create your models here.
 class Portfolio(models.Model):
-    Portfolio_name = models.CharField(_("portfolio_name/id"), max_length=50, null=True, unique=False, default='MY PORTFOLIO CONFIG')
+    Portfolio_name = models.CharField(_("portfolio_name/id"), max_length=50, null=True, unique=True, default='MY PORTFOLIO CONFIG')
     # User_info = models.OneToOneField("portfolio.User_info", verbose_name=_("user_info"), on_delete=models.CASCADE)
     # Personlization = models.OneToOneField("portfolio.Personlization", verbose_name=_("personalization"), on_delete=models.CASCADE)
 
@@ -19,6 +19,8 @@ class User_info(models.Model):
     Country = CountryField(help_text="Country of Residence", default='Choose Country')
     City = models.CharField(_('City_Name'), max_length=50, help_text="name of city that would be displayed on front page", default='Enter City Name')
     Phone_number = PhoneNumberField(_("Phone Number"), help_text="Phone number to display on home page", default='Enter phone number')
+    profession = models.CharField(_("Professions"), max_length=100, help_text='professions to be placed on homepage. Use comma to separate profession', null=True)
+    Curriculum_vitae = models.FileField(_("Curriculum_Vitae"), upload_to='upload/', max_length=100, help_text='File upload for CV', null=True)
     class Meta:
         verbose_name = ("User_Information")
         verbose_name_plural = ("User_Information")
@@ -52,7 +54,7 @@ class Social_info(models.Model):
     Instagram_url = models.URLField(_("Instagram Account Url"), max_length=200, default='None')
     Twitter_url = models.URLField(_("Twitter Account Url"), max_length=200, default='None')
     LinkedIn_url = models.URLField(_("LinkedIn Account Url"), max_length=200, default='None')
-    EMail_account_name = models.EmailField(_("Email Name"), max_length=254, default='None')
+    Email_account_name = models.EmailField(_("Email Name"), max_length=254, default='None')
     
     class Meta:
         verbose_name = _("Social_info")
