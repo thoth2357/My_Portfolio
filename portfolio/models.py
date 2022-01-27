@@ -27,7 +27,7 @@ class User_info(models.Model):
         return self.Fullname
 
 class Personlization(models.Model):
-    Portfolio = models.OneToOneField("portfolio.Portfolio", verbose_name=_("User_info"), on_delete=models.CASCADE, null=True)
+    Portfolio = models.OneToOneField("portfolio.Portfolio", verbose_name=_("User_info"), on_delete=models.RESTRICT, null=True)
     CHOICES = (
         ('YELLOW', 'YELLOW'),
         ('RED', 'RED'),
