@@ -7,5 +7,5 @@ var interval = window.setInterval(function(){
     }else{
         icon.style.visibility = 'hidden';
     }
-}, 500);
+}, 300);
 // ** End code blocks used for setting terminal icon to blink on home section ** 

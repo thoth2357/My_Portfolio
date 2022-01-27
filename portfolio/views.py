@@ -15,7 +15,8 @@ def home_view(request):
         request:
     """
     color = 'yellow'
-    context = {'color':color}
+    fullname = 
+    context = {'color':color, 'fullname':fullname}
     return render(request, "Homepages/index.html", context)
 
 
