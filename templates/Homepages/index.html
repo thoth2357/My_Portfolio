@@ -1,3 +1,132 @@
 {% extends 'base.html' %}
+{% load static %}
 {% block title %} Home {% endblock %}
 
+{% block styles %}
+    <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'css/owl.carousel.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'css/owl.theme.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'css/owl.transitions.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'css/animate.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'css/magnific-popup.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'css/coloring.css' %}" type="text/css">
+    <link id="css-style" rel="stylesheet" href="{% static 'css/colors/red.css' %}" type="text/css"> 
+{% endblock styles %}
+
+{% block content %}
+<body id="homepage" class="homepage">
+
+    <div id="wrapper" class="fullwidth no-padding">
+		
+		<div id="bg-overlay"></div>
+		
+        <div id="main">
+
+            <!-- TOP BAR BEGIN -->
+            <div id="top-bar" class="transparent dark">
+
+                <div id="logo">
+                    <i class="fa fa-terminal fa-lg" style="color:red"></i>
+                    Jonna Satria
+                </div>
+
+                <nav>
+                    <ul id="mainmenu">
+                        <li><a href="#section-home" class="active"><span>01</span>Home</a></li>
+                        <li><a href="#section-services"><span>02</span>Services</a></li>
+                        <li><a href="#section-experiences"><span>03</span>Experiences</a></li>
+                        <li><a href="#section-portfolio"><span>05</span>Portfolio</a></li>
+                        <li><a href="#section-blog"><span>06</span>Blog</a></li>
+                        <li><a href="#section-contact"><span>07</span>Contact</a></li>
+                    </ul>
+                </nav>
+
+                <span id="menu-btn">
+					<span class="lt"></span>
+					<span class="lm"></span>
+					<span class="lb"></span>
+				  </span>
+
+                <div id="mp-col">
+                    <a href="#" class="btn-download light"><span class="id-color"><i class="fa fa-file-pdf-o"></i></span>Download CV</a>
+                </div>
+
+                <div class="clearfix"></div>
+
+            </div>
+            <!-- TOP BAR CLOSE -->
+
+            <!-- CONTENT BEGIN -->
+            <div id="content">
+
+                <div class="page-deco">+208 333 9296</div>
+
+                <div class="social-icons-fixed">
+                    <div class="sc-inner">
+                        <a href="#"><i class="fa fa-facebook fa-lg"></i></a>
+                        <a href="#"><i class="fa fa-instagram fa-lg"></i></a>
+                        <a href="#"><i class="fa fa-twitter fa-lg"></i></a>
+                        <a href="#"><i class="fa fa-linkedin fa-lg"></i></a>
+                        <a href="#"><i class="fa fa-envelope-o fa-lg"></i></a>
+                    </div>
+                </div>
+
+                <!-- section begin -->
+                <section id="section-home" aria-label="section" class="full-height no-top no-bottom text-light" data-bgimage="url(images/background/2.jpg)">
+					<div id="particles-js"></div>
+                    <div class="overlay-bg t50">
+                        <div class="middle">
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-md-12 text-center">
+                                        <p class="lead"><span class="id-color">Hi, welcome to my personal website.</span></p>
+                                        <div class="spacer20"></div>
+                                        <div class="h1_big">My name Jonna Satria, a
+                                            <br> London based
+                                            <div class="typed-strings">
+                                                <p>Designer</p>
+                                                <p>Programmer</p>
+                                                <p>Photographer</p>
+                                            </div>
+                                            <div class="typed"></div>
+                                        </div>
+                                        <div class="spacer60"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <a href="#section-services" class="scroll-to">
+                        <span class="arrow bounce">
+							<i class="arrow_down"></i>
+                        </span>
+                    </a>
+                </section>
+                <!-- section close -->
+{% endblock content %}
+
+{% block script %}
+    <script src="{% static 'js/jquery.min.js' %}"></script>
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'js/jquery.isotope.min.js' %}"></script>
+    <script src="{% static 'js/easing.js' %}"></script>
+    <script src="{% static 'js/owl.carousel.js' %}"></script>
+    <script src="{% static 'js/jquery.countTo.js' %}"></script>
+    <script src="{% static 'js/validation.js' %}"></script>
+    <script src="{% static 'js/wow.min.js' %}"></script>
+    <script src="{% static 'js/jquery.magnific-popup.min.js' %}"></script>
+    <script src="{% static 'js/enquire.min.js' %}"></script>
+    <script src="{% static 'js/jquery.stellar.min.js' %}"></script>
+    <script src="{% static 'js/jquery.plugin.js' %}"></script>
+    <script src="{% static 'js/jquery.scrollTo.min.js' %}"></script>
+    <script src="{% static 'js/typed.js' %}"></script>
+    <script src="{% static 'js/typed-custom.js' %}"></script>
+    <script src="{% static 'js/particles.js' %}"></script>
+    <script src="{% static 'js/app.js' %}"></script>
+    <script src="{% static 'js/designesia.js' %}"></script>
+    <script src="{% static 'js/utils.js' %}"></script>
+    
+
+{% endblock script %}

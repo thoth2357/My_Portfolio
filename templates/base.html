@@ -1,31 +1,25 @@
-{% load static %}
 <!doctype html>
 <html lang="en">
     <head>
         <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
 
-        <title>Oluwaseyi - {% block title %} {% endblock title %}
+        <title>Portfolio - {% block title %} {% endblock title %}
         </title>
         {% block styles %}
-            <link rel="stylesheet" href="css/bootstrap.css" type="text/css">
-            <link rel="stylesheet" href="css/animate.css" type="text/css">
-            <link rel="stylesheet" href="css/owl.carousel.css" type="text/css">
-            <link rel="stylesheet" href="css/owl.theme.css" type="text/css">
-            <link rel="stylesheet" href="css/owl.transitions.css" type="text/css">
-            <link rel="stylesheet" href="css/magnific-popup.css" type="text/css">
-            <link rel="stylesheet" href="css/style.css" type="text/css">
-            <link rel="stylesheet" href="css/coloring.css" type="text/css">
 
             <!-- color scheme -->
-            <link rel="stylesheet" href="css/colors/red.css" type="text/css">
+           
+            {% comment %} TODO TASK: 'enable color changes for portfolio' .time:2022-01-23  11:45:36 {% endcomment %}
         {% endblock styles %}
     </head>
+
     <body>
         {% block content %}
 
         {% endblock content %}
     </body>
-        {% block script %}
 
+        {% block script %}
+        
         {% endblock script%}
 </html>

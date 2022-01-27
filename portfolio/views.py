@@ -14,9 +14,9 @@ def home_view(request):
     Args:
         request:
     """
-    context = {}
+    color = 'yellow'
+    context = {'color':color}
     return render(request, "Homepages/index.html", context)
-
 
 
 
