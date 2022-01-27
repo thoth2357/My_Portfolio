@@ -31,10 +31,10 @@ class User_info(models.Model):
 class Personlization(models.Model):
     Portfolio = models.OneToOneField("portfolio.Portfolio", verbose_name=_("User_info"), on_delete=models.CASCADE, null=True)
     CHOICES = (
-        ('YELLOW', 'YELLOW'),
-        ('RED', 'RED'),
-        ('BLUE', 'BLUE'),
-        ('ORANGE', 'ORANGE')
+        ('yellow', 'yellow'),
+        ('red', 'red'),
+        ('blue', 'blue'),
+        ('orange', 'orange')
     )
 
     Color_theme = models.CharField(_("Color Theme for Portfolio Colors"),choices=CHOICES, max_length=50, default='Choose color theme', help_text='Choose the portfolio color scheme')
