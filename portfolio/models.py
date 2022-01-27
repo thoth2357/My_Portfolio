@@ -1,7 +1,8 @@
 from pyexpat import model
 from turtle import color
 from django.db import models
-from django.utils.translation import ugettext_lazy as _
+from django.core.exceptions import PermissionDenied
+from django.utils.translation import gettext_lazy as _
 from django_countries.fields import CountryField
 from phonenumber_field.modelfields import PhoneNumberField
 
@@ -10,6 +11,13 @@ class Portfolio(models.Model):
     Portfolio_name = models.CharField(_("portfolio_name/id"), max_length=50, null=True, unique=True, default='MY PORTFOLIO CONFIG')
     # User_info = models.OneToOneField("portfolio.User_info", verbose_name=_("user_info"), on_delete=models.CASCADE)
     # Personlization = models.OneToOneField("portfolio.Personlization", verbose_name=_("personalization"), on_delete=models.CASCADE)
+    
+    def save(self, *args, **kwargs) -> None:
+        if Portfolio.objects.count() >= 1:
+            raise PermissionDenied
+        else:
+            return super().save(*args, **kwargs)
+
 
     def __str__(self) -> str:
         return f'Portfolio Config'

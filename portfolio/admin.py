@@ -25,8 +25,8 @@ class PortfolioAdmin(admin.ModelAdmin):
 
     readonly_fields = ['Portfolio_name']
 
-    def has_add_permission(self, request, obj=None) -> bool:
-        return False
+    # def has_add_permission(self, request, obj=None) -> bool:
+    #     return False
     
     def has_delete_permission(self, request, obj=None) -> bool:
         return False
