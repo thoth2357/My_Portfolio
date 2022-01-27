@@ -40,7 +40,7 @@ class Personlization(models.Model):
     Color_theme = models.CharField(_("Color Theme for Portfolio Colors"),choices=CHOICES, max_length=50, default='Choose color theme', help_text='Choose the portfolio color scheme')
     Terminal_icon_blink = models.BooleanField(_("ON or OFF blink terminal icon on homepage"), default=True, null=True)
     Animation = models.BooleanField(_("ON or OFF animation on homepage"), default=True, null=True)
-
+    Background_picture = models.ImageField(_("Background picture for home page"), upload_to='images/', height_field=None, width_field=None, max_length=None, null=True)
     class Meta:
         verbose_name = ("Personalization")
         verbose_name_plural = ("Personalization")
@@ -55,7 +55,7 @@ class Social_info(models.Model):
     Twitter_url = models.URLField(_("Twitter Account Url"), max_length=200, default='None')
     LinkedIn_url = models.URLField(_("LinkedIn Account Url"), max_length=200, default='None')
     Email_account_name = models.EmailField(_("Email Name"), max_length=254, default='None')
-    
+    Github_url = models.URLField(_("Github Account Url"), max_length=200, default='None')
     class Meta:
         verbose_name = _("Social_info")
         verbose_name_plural = _("Social_infos")
@@ -63,7 +63,7 @@ class Social_info(models.Model):
     def __str__(self):
         return f'Social Info'
     
-    
+
 
     
 
