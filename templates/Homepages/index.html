@@ -76,7 +76,10 @@
 
                 <!-- section begin -->
                 <section id="section-home" aria-label="section" class="full-height no-top no-bottom text-light" data-bgimage="url({{personlization_info.Background_picture.url}})">
-					<div id="particles-js"></div>
+					{% if personlization_info.Animation %}  
+                        <div id="particles-js"></div>
+                    {% else %}{% endif %}
+                    
                     <div class="overlay-bg t50">
                         <div class="middle">
                             <div class="container">
