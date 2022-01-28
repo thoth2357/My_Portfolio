@@ -20,15 +20,15 @@ def home_view(request):
     user_info = User_info.objects.get(Portfolio__Portfolio_name=config_name)
     personlization_info = Personlization.objects.get(Portfolio__Portfolio_name=config_name)
     social_info = Social_info.objects.get(Portfolio__Portfolio_name=config_name)
+    services_info = Services.objects.all().filter(Portfolio__Portfolio_name="MY PORTFOLIO CONFIG")
 
     
-    fullname = user_info
-    Cv = user_info.Curriculum_vitae
     profession = [i.strip() for i in user_info.profession.split(',')]
     
     context = {'user_info':user_info, 'profession':profession, 
     'social_info':social_info, 
-    'personlization_info':personlization_info
+    'personlization_info':personlization_info,
+    'services_info':services_info
     }
     return render(request, "Homepages/index.html", context)
 

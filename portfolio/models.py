@@ -9,7 +9,7 @@ from phonenumber_field.modelfields import PhoneNumberField
 
 # Create your models here.
 class Portfolio(models.Model):
-    Portfolio_name = models.CharField(_("portfolio_name/id"), max_length=50, null=True, unique=True, default='MY PORTFOLIO CONFIG')
+    Portfolio_name = models.CharField(_("portfolio_name/id"), max_length=50, null=True, default='MY PORTFOLIO CONFIG')
     # User_info = models.OneToOneField("portfolio.User_info", verbose_name=_("user_info"), on_delete=models.CASCADE)
     # Personlization = models.OneToOneField("portfolio.Personlization", verbose_name=_("personalization"), on_delete=models.CASCADE)
     
@@ -77,7 +77,7 @@ class Services(models.Model):
     Portfolio = models.ForeignKey("portfolio.Portfolio", verbose_name=_("User_info"), on_delete=models.CASCADE, null=True)
     Icon_name = models.CharField(_("icon name"), max_length=50, help_text='icon to be used for describing this service')
     Title = models.CharField(_("Title of services"), max_length=60, help_text="title to be used for this particular services")
-    Description = models.CharField(_("Description of services"), max_length=100, help_text='Description of this service')
+    Description =  models.TextField(_("Description of services"), help_text='Description of this service') 
 
 
 
@@ -86,7 +86,7 @@ class Services(models.Model):
         verbose_name_plural = _("Servicess")
 
     def __str__(self):
-        return f'Services'
+        return f'{self.Title}'
     
 
 
