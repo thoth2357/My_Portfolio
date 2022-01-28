@@ -73,6 +73,23 @@ class Social_info(models.Model):
         return f'Social Info'
     
 
+class Services(models.Model):
+    Portfolio = models.ForeignKey("portfolio.Portfolio", verbose_name=_("User_info"), on_delete=models.CASCADE, null=True)
+    Icon_name = models.CharField(_("icon name"), max_length=50, help_text='icon to be used for describing this service')
+    Title = models.CharField(_("Title of services"), max_length=60, help_text="title to be used for this particular services")
+    Description = models.CharField(_("Description of services"), max_length=100, help_text='Description of this service')
+
+
+
+    class Meta:
+        verbose_name = _("Services")
+        verbose_name_plural = _("Servicess")
+
+    def __str__(self):
+        return f'Services'
+    
+
+
 
     
 

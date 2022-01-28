@@ -19,9 +19,13 @@ class Social_info_inline(admin.StackedInline):
     def has_delete_permission(self, request, obj=None) -> bool:
         return False
 
+class ServicesInline(admin.StackedInline):
+    model = Services
+
+
 @admin.register(Portfolio)
 class PortfolioAdmin(admin.ModelAdmin):
-    inlines = [Personalization_Inline, User_info_inline, Social_info_inline]
+    inlines = [Personalization_Inline, User_info_inline, Social_info_inline, ServicesInline]
 
     readonly_fields = ['Portfolio_name']
 
