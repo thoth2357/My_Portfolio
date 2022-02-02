@@ -9,7 +9,7 @@ class User_info_inline(admin.StackedInline):
     def has_delete_permission(self, request, obj=None) -> bool:
         return False
 
-class Personalization_Inline(admin.TabularInline):
+class Personalization_Inline(admin.StackedInline):
     model = Personlization
     def has_delete_permission(self, request, obj=None) -> bool:
         return False
@@ -21,6 +21,9 @@ class Social_info_inline(admin.StackedInline):
 
 class ServicesInline(admin.StackedInline):
     model = Services
+
+class WorkInline(admin.StackedInline):
+    model = Work
 
 
 @admin.register(Portfolio)
@@ -40,3 +43,9 @@ class PortfolioAdmin(admin.ModelAdmin):
             return True
         def has_delete_permission(self, request, obj=None) -> bool:
             return False
+
+@admin.register(Experience)
+class ExperienceAdmin(admin.ModelAdmin):
+    inlines = [WorkInline]
+    def has_view_permission(self, request, obj=None) -> bool:
+        return True

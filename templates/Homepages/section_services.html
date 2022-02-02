@@ -2,12 +2,14 @@
 <section id="section-services" class="fluid">
     <div class="container-fluid">
         <div class="row-fluid table">
+            {% if personlization_info.Service_background_picture_switch %}  
             <div class="col-md-6 va-top">
                 <div class="img-fx">
-                    <img src="images/misc/1.jpg" alt="">
+                    <img src="{{personlization_info.Service_background_picture.url}}" alt="">
                     <div class="img-url"></div>
                 </div>
             </div>
+            {% else %}{% endif %}
 
             <div class="col-md-6">
                 <div class="content-wrap">

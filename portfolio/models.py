@@ -47,9 +47,16 @@ class Personlization(models.Model):
     )
 
     Color_theme = models.CharField(_("Color Theme for Portfolio Colors"),choices=CHOICES, max_length=50, default='Choose color theme', help_text='Choose the portfolio color scheme')
-    Terminal_icon_blink = models.BooleanField(_("ON or OFF blink terminal icon on homepage"), default=True, null=True)
-    Animation = models.BooleanField(_("ON or OFF animation on homepage"), default=True, null=True)
-    Background_picture = models.ImageField(_("Background picture for home page"), upload_to='images/', height_field=None, width_field=None, max_length=None, null=True)
+    Terminal_icon_blink = models.BooleanField(_("Blink terminal icon"), default=True, null=True)
+    Animation = models.BooleanField(_("animation on homepage"), default=True, null=True)
+    Background_picture = models.ImageField(_("home page bg "), upload_to='images/', height_field=None, width_field=None, max_length=None, null=True)
+    Service_background_picture = models.ImageField(_("service page bg"), upload_to='images/', height_field=None, width_field=None, max_length=None, null=True)
+    Experience_background_picture = models.ImageField(_("experience page bg"), upload_to='images/', height_field=None, width_field=None, max_length=None, null=True)
+    
+    Service_background_picture_switch = models.BooleanField(_("service page bg switch"), default=True, null=True)
+    Experience_background_picture_switch = models.BooleanField(_("experience page bg switch"), default=True, null=True)
+
+
     class Meta:
         verbose_name = ("Personalization")
         verbose_name_plural = ("Personalization")
@@ -79,11 +86,34 @@ class Services(models.Model):
     Title = models.CharField(_("Title of services"), max_length=60, help_text="title to be used for this particular services")
     Description =  models.TextField(_("Description of services"), help_text='Description of this service') 
 
-
-
     class Meta:
         verbose_name = _("Services")
         verbose_name_plural = _("Servicess")
+
+    def __str__(self):
+        return f'{self.Title}'
+
+class Work(models.Model):
+    Title = models.CharField(_("The Title of Post/Job"), max_length=70)
+    Description = models.TextField(_("Description of Job done"))
+    Start_date = models.DateField(_("Date Job Started"), auto_now=False, auto_now_add=False)
+    End_date = models.DateField(_("Date Job Ended"), auto_now=False, auto_now_add=False)
+    Experience = models.ForeignKey("portfolio.Experience", verbose_name=_("User Experience"), on_delete=models.CASCADE)
+
+    class Meta:
+        verbose_name = _("Work")
+        verbose_name_plural = _("Works")
+    
+    def __str__(self):
+        return f'{self.Title}'
+
+class Experience(models.Model):
+    User_story = models.TextField(_("User Experience Story"))
+    
+
+    class Meta:
+        verbose_name = _("Experience")
+        verbose_name_plural = _("Experiences")
 
     def __str__(self):
         return f'{self.Title}'
