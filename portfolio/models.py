@@ -98,7 +98,7 @@ class Work(models.Model):
     Description = models.TextField(_("Description of Job done"))
     Start_date = models.DateField(_("Date Job Started"), auto_now=False, auto_now_add=False)
     End_date = models.DateField(_("Date Job Ended"), auto_now=False, auto_now_add=False)
-    Experience = models.ForeignKey("portfolio.Experience", verbose_name=_("User Experience"), on_delete=models.CASCADE)
+    Experience = models.ForeignKey("portfolio.Experience", verbose_name=_("User Experience"), on_delete=models.CASCADE, null=True)
 
     class Meta:
         verbose_name = _("Work")
@@ -116,7 +116,7 @@ class Experience(models.Model):
         verbose_name_plural = _("Experiences")
 
     def __str__(self):
-        return f'{self.Title}'
+        return f'Experience'
     
 
 

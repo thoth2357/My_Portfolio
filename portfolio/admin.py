@@ -47,5 +47,15 @@ class PortfolioAdmin(admin.ModelAdmin):
 @admin.register(Experience)
 class ExperienceAdmin(admin.ModelAdmin):
     inlines = [WorkInline]
-    def has_view_permission(self, request, obj=None) -> bool:
-        return True
+
+    if Experience.objects.count() > 1:
+        def has_add_permission(self, request, obj=None) -> bool:
+            return False
+        def has_delete_permission(self, request, obj=None) -> bool:
+            return False
+    else:
+        def has_add_permission(self, request, obj=None) -> bool:
+            return True
+        def has_delete_permission(self, request, obj=None) -> bool:
+            return False
+    
