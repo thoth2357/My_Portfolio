@@ -42,21 +42,13 @@
                             </div>
 
                             <div class="tab_single_content">
+                                {% for edu in experience_info_education %}
                                 <div class="exp-box">
-                                    <h5>2014</h5>
-                                    <h4>Product Design, Harvard University</h4>
-                                    <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae.</p>
+                                    <h5>{{edu.Year_of_graduation}}</h5>
+                                    <h4>{{edu.Degree_awarded}}</h4>
+                                    <p>{{edu.Description}}</p>
                                 </div>
-                                <div class="exp-box">
-                                    <h5>2010</h5>
-                                    <h4>Master of Design, University of California</h4>
-                                    <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto.</p>
-                                </div>
-                                <div class="exp-box">
-                                    <h5>2006</h5>
-                                    <h4>Bachelor of Arts, Standford University</h4>
-                                    <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto.</p>
-                                </div>
+                                {% endfor %}
                             </div>
 
                         </div>
