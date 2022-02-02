@@ -107,17 +107,27 @@ class Work(models.Model):
     def __str__(self):
         return f'{self.Title}'
 
+class Education(models.Model):
+    Year_of_graduation = models.DateField(_("Year of graduation"), auto_now=False, auto_now_add=False)
+    Degree_awarded = models.CharField(_("Degree Awarded"), max_length=50)
+    Description = models.TextField(_("Description of degree awarded"))
+    Experience = models.ForeignKey("portfolio.Experience", verbose_name=_("User Experience"), on_delete=models.CASCADE, null=True)
+    class Meta:
+        verbose_name = _("Education")
+        verbose_name_plural = _("Educations")
+
+    def __str__(self):
+        return f'Education'
+
+
 class Experience(models.Model):
     User_story = models.TextField(_("User Experience Story"))
-    
-
     class Meta:
         verbose_name = _("Experience")
         verbose_name_plural = _("Experiences")
 
     def __str__(self):
         return f'Experience'
-    
 
 
 

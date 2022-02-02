@@ -25,6 +25,10 @@ class ServicesInline(admin.StackedInline):
 class WorkInline(admin.StackedInline):
     model = Work
 
+class EducationInline(admin.StackedInline):
+    model = Education
+
+
 
 @admin.register(Portfolio)
 class PortfolioAdmin(admin.ModelAdmin):
@@ -46,7 +50,7 @@ class PortfolioAdmin(admin.ModelAdmin):
 
 @admin.register(Experience)
 class ExperienceAdmin(admin.ModelAdmin):
-    inlines = [WorkInline]
+    inlines = [WorkInline, EducationInline]
 
     if Experience.objects.count() > 1:
         def has_add_permission(self, request, obj=None) -> bool:
