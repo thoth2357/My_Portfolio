@@ -162,3 +162,23 @@ class PortfolioExhibit(models.Model):
     Short_Description = models.TextField(_("Work Short Description"))
     Date = models.DateField(_("Date of project"), auto_now=False, auto_now_add=False)
     # client = models.CharField()
+
+
+class Contact(models.Model):
+    Portfolio = models.ForeignKey("portfolio.Portfolio", verbose_name=_("User_info"), on_delete=models.CASCADE,
+                                null=True)
+    E_mail = models.EmailField(_("Contact EMail"), max_length=254)
+    Phone = PhoneNumberField(_("Phone Number"), help_text="Phone number to display on home page",
+                                    default='Enter phone number')
+    Website = models.URLField(_("Website Link"), max_length=200)
+    Address = models.TextField(_("Address of Contact"))
+    
+
+    class Meta:
+        verbose_name = _("Contact")
+        verbose_name_plural = _("Contacts")
+
+    def __str__(self):
+        return f'Cotacts'
+
+    

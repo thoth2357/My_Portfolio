@@ -2,12 +2,15 @@
 <section id="section-contact" class="fluid">
     <div class="container-fluid">
         <div class="row-fluid table">
+            {% if personlization_info.Contact_background_picture_switch %}  
             <div class="col-md-6 va-top">
                 <div class="img-fx">
                     <img src="images/misc/4.jpg" alt="">
                     <div class="img-url"></div>
                 </div>
             </div>
+            {% else %}{% endif %}
+            
             <div class="col-md-6">
                 <div class="content-wrap">
                     <div class="in-box">
