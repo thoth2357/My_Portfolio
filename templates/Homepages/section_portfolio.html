@@ -1,0 +1,25 @@
+<!-- section begin -->
+<section id="section-portfolio" aria-label="section-portfolio" class="fluid overwidth">
+    <div class="container-fluid">
+        {% for items in portfolio  %}
+            <div id="album-carousel-2" class="owl-carousel owl-theme">
+            <div class="carousel-item click" data-bgimage="url(images/portfolio/1.jpg)" data-url="portfolio-single-1.html">
+                <div class="mask s2 full-height">
+                    <div class="cover">
+                        <div class="text">
+                            <h2>Light Bulb</h2>
+                            <div class="tiny-border"></div>
+                            <div class="clearfix"></div>
+                            <p>Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+
+    <div class="pf-nav left"><i class="arrow_left"></i></div>
+    <div class="pf-nav right"><i class="arrow_right"></i></div>
+</section>
+<!-- section close -->

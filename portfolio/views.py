@@ -1,8 +1,10 @@
-#importing modules
+# importing modules
 from django.shortcuts import render
 
-#import models
+# import models
 from .models import *
+
+
 # Create your views here.
 
 def home_view(request):
@@ -12,7 +14,7 @@ def home_view(request):
     Args:
         request:
     """
-    config_name = "MY PORTFOLIO CONFIG"  
+    config_name = "MY PORTFOLIO CONFIG"
 
     user_info = User_info.objects.get(Portfolio__Portfolio_name=config_name)
     personlization_info = Personlization.objects.get(Portfolio__Portfolio_name=config_name)
@@ -21,18 +23,16 @@ def home_view(request):
     experience_info = Experience.objects.first()
     experience_info_work = Work.objects.all().filter(Experience__User_story=experience_info.User_story)
     experience_info_education = Education.objects.all().filter(Experience__User_story=experience_info.User_story)
-    
+    portfolio_info = 4
     profession = [i.strip() for i in user_info.profession.split(',')]
-    
-    context = {'user_info':user_info, 'profession':profession, 
-    'social_info':social_info, 
-    'personlization_info':personlization_info,
-    'services_info':services_info,
-    'experience_info':experience_info,
-    'experience_info_work':experience_info_work,
-    'experience_info_education':experience_info_education
-    }
+
+    context = {'user_info': user_info, 'profession': profession,
+               'social_info': social_info,
+               'personlization_info': personlization_info,
+               'services_info': services_info,
+               'experience_info': experience_info,
+               'experience_info_work': experience_info_work,
+               'experience_info_education': experience_info_education,
+               'portfolio_info': portfolio_info
+               }
     return render(request, "Homepages/index.html", context)
-
-
-
