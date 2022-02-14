@@ -69,10 +69,12 @@ class Personlization(models.Model):
                                                    width_field=None, max_length=None, null=True)
     Experience_background_picture = models.ImageField(_("experience page bg"), upload_to='images/', height_field=None,
                                                       width_field=None, max_length=None, null=True)
+    Contact_background_picture = models.ImageField(_("contact page bg"), upload_to='images/', height_field=None,
+                                                      width_field=None, max_length=None, null=True)
 
     Service_background_picture_switch = models.BooleanField(_("service page bg switch"), default=True, null=True)
     Experience_background_picture_switch = models.BooleanField(_("experience page bg switch"), default=True, null=True)
-
+    Contact_background_picture_switch = models.BooleanField(_("contact page bg switch"), default=True, null=True)
     class Meta:
         verbose_name = ("Personalization")
         verbose_name_plural = ("Personalization")
@@ -167,11 +169,10 @@ class PortfolioExhibit(models.Model):
 class Contact(models.Model):
     Portfolio = models.ForeignKey("portfolio.Portfolio", verbose_name=_("User_info"), on_delete=models.CASCADE,
                                 null=True)
-    E_mail = models.EmailField(_("Contact EMail"), max_length=254)
-    Phone = PhoneNumberField(_("Phone Number"), help_text="Phone number to display on home page",
-                                    default='Enter phone number')
-    Website = models.URLField(_("Website Link"), max_length=200)
-    Address = models.TextField(_("Address of Contact"))
+    E_mail = models.EmailField(_("Contact E-Mail"), max_length=254)
+    Phone = PhoneNumberField(_("Phone Number"), help_text="Phone number to display on home page")
+    Website = models.URLField(_("Website Link"), max_length=200, help_text="Website Link")
+    Address = models.TextField(_("Address of Contact"), help_text='Contact Address')
     
 
     class Meta:

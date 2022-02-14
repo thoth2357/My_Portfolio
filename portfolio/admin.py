@@ -28,11 +28,14 @@ class WorkInline(admin.StackedInline):
 class EducationInline(admin.StackedInline):
     model = Education
 
+class ContactInline(admin.StackedInline):
+    model = Contact
+
 
 
 @admin.register(Portfolio)
 class PortfolioAdmin(admin.ModelAdmin):
-    inlines = [Personalization_Inline, User_info_inline, Social_info_inline, ServicesInline]
+    inlines = [Personalization_Inline, User_info_inline, Social_info_inline, ServicesInline, ContactInline]
 
     readonly_fields = ['Portfolio_name']
 
