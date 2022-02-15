@@ -72,9 +72,9 @@ class Personlization(models.Model):
     Contact_background_picture = models.ImageField(_("contact page bg"), upload_to='images/', height_field=None,
                                                       width_field=None, max_length=None, null=True)
 
-    Service_background_picture_switch = models.BooleanField(_("service page bg switch"), default=True, null=True)
-    Experience_background_picture_switch = models.BooleanField(_("experience page bg switch"), default=True, null=True)
-    Contact_background_picture_switch = models.BooleanField(_("contact page bg switch"), default=True, null=True)
+    Service_background_picture_switch = models.BooleanField(_("service page bg switch"), default=False, null=True)
+    Experience_background_picture_switch = models.BooleanField(_("experience page bg switch"), default=False, null=True)
+    Contact_background_picture_switch = models.BooleanField(_("contact page bg switch"), default=False, null=True)
     class Meta:
         verbose_name = ("Personalization")
         verbose_name_plural = ("Personalization")
