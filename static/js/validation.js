@@ -6,6 +6,7 @@ $(document).ready(function() {
             d = $("#email").val(),
             e = $("#phone").val(),
             f = $("#message").val();
+        console.log('hello here man',c);
         if ($("#name,#email,#phone,#message").click(function() {
                 $(this).removeClass("error_input")
             }), 0 == c.length) {
@@ -27,7 +28,7 @@ $(document).ready(function() {
         0 == b && ($("#send_message").attr({
             disabled: "true",
             value: "Sending..."
-        }), $.post("email.php", $("#contact_form").serialize(), function(a) {
+        }), $.post("", $("#contact_form").serialize(), function(a) {
             "sent" == a ? ($("#submit").remove(), $("#mail_success").fadeIn(500)) : ($("#mail_fail").fadeIn(500), $("#send_message").removeAttr("disabled").attr("value", "Send The Message"))
         }))
     })
