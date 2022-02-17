@@ -24,8 +24,6 @@ def home_view(request):
     """
     config_name = "MY PORTFOLIO CONFIG"
 
-    form = ContactForm()
-
     user_info = User_info.objects.get(Portfolio__Portfolio_name=config_name)
     personlization_info = Personlization.objects.get(Portfolio__Portfolio_name=config_name)
     social_info = Social_info.objects.get(Portfolio__Portfolio_name=config_name)
@@ -37,7 +35,22 @@ def home_view(request):
     profession = [i.strip() for i in user_info.profession.split(',')]
     contact_info = Contact.objects.all().get(Portfolio__Portfolio_name="MY PORTFOLIO CONFIG")
 
-    if request.method == 'POST':
+    if request.method == 'GET':
+        form = ContactForm()
+        context = {'user_info': user_info, 'profession': profession,
+                'social_info': social_info,
+                'personlization_info': personlization_info,
+                'services_info': services_info,
+                'experience_info': experience_info,
+                'experience_info_work': experience_info_work,
+                'experience_info_education': experience_info_education,
+                'portfolio_info': portfolio_info,
+                'contact_info':contact_info,
+                'form':form,
+                }
+        return render(request, "Homepages/index.html", context)
+
+    elif request.method == 'POST':
         form = ContactForm(request.POST)
         if form.is_valid():
             name = form.cleaned_data['name']
@@ -45,13 +58,16 @@ def home_view(request):
             phone = form.cleaned_data['phone']
             message = form.cleaned_data['message']
             
-            #sending email to portfolio owner
-            # send_mail('EMail From Personal Website',
-            # message,
-            # email,
-            # [Contact.objects.all().get(Portfolio__Portfolio_name="MY PORTFOLIO CONFIG").E_mail]
-            # )
-            message_sent = 'True'    #django message not used cause i don't find it attractive at the moment
+            # try:
+            # sending email to portfolio owner
+            send_mail('EMail From Personal Website',
+            message,
+            email,
+            [Contact.objects.all().get(Portfolio__Portfolio_name="MY PORTFOLIO CONFIG").E_mail]
+            )
+                #django message not used cause i don't find it attractive at the moment
+            # except Exception as e:
+            #     print(e)
         else:
             message_sent = 'False'
         
@@ -65,21 +81,5 @@ def home_view(request):
                'portfolio_info': portfolio_info,
                'contact_info':contact_info,
                'form':form,
-               'message_sent':message_sent,
         }
         return render(request, "Homepages/index.html", context)
-        
-            
-    
-    context = {'user_info': user_info, 'profession': profession,
-               'social_info': social_info,
-               'personlization_info': personlization_info,
-               'services_info': services_info,
-               'experience_info': experience_info,
-               'experience_info_work': experience_info_work,
-               'experience_info_education': experience_info_education,
-               'portfolio_info': portfolio_info,
-               'contact_info':contact_info,
-               'form':form,
-               }
-    return render(request, "Homepages/index.html", context)
