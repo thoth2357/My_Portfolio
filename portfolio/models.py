@@ -1,6 +1,5 @@
 from pyexpat import model
 from turtle import color
-from xml.dom import VALIDATION_ERR
 from django.db import models
 from django.core.exceptions import PermissionDenied
 from django.utils.translation import gettext_lazy as _
@@ -182,4 +181,3 @@ class Contact(models.Model):
     def __str__(self):
         return f'Cotacts'
 
-    

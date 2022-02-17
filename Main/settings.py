@@ -46,6 +46,7 @@ INSTALLED_APPS = [
 
     #django Apps
     'portfolio',
+    'blog',
 
     #Third party Apps
     'django_countries',
