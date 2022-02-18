@@ -1,6 +1,7 @@
 # importing modules
 from email import message
 from operator import contains
+from urllib import request
 from django.shortcuts import render
 from django.views.decorators.csrf import csrf_protect
 from django.contrib import messages
@@ -11,6 +12,7 @@ from django.core.mail import send_mail
 # import models
 from .models import *
 from .forms import ContactForm
+from blog.models import Post
 
 
 # Create your views here.
@@ -34,7 +36,7 @@ def home_view(request):
     portfolio_info = 4
     profession = [i.strip() for i in user_info.profession.split(',')]
     contact_info = Contact.objects.all().get(Portfolio__Portfolio_name="MY PORTFOLIO CONFIG")
-
+    blog_info = Post.objects.all()
     if request.method == 'GET':
         form = ContactForm()
         context = {'user_info': user_info, 'profession': profession,
@@ -46,7 +48,9 @@ def home_view(request):
                 'experience_info_education': experience_info_education,
                 'portfolio_info': portfolio_info,
                 'contact_info':contact_info,
+                'blog_info':blog_info,
                 'form':form,
+                
                 }
         return render(request, "Homepages/index.html", context)
 
@@ -83,3 +87,16 @@ def home_view(request):
                'form':form,
         }
         return render(request, "Homepages/index.html", context)
+
+
+
+def blog_view(request, slug , *args):
+    """
+    function based view for blog post details page
+
+    Args:
+        request:
+    """
+    print('return value',slug)
+    context = {}
+    return render(request, "Homepages/blog_single.html", context)
