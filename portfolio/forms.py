@@ -1,4 +1,3 @@
-from email.message import EmailMessage
 from django import forms
 
 class ContactForm(forms.Form):

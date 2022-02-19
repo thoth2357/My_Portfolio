@@ -2,7 +2,7 @@
 from email import message
 from operator import contains
 from urllib import request
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.views.decorators.csrf import csrf_protect
 from django.contrib import messages
 from django.core.mail import send_mail
@@ -13,6 +13,7 @@ from django.core.mail import send_mail
 from .models import *
 from .forms import ContactForm
 from blog.models import Post
+from blog.forms import CommentForm
 
 
 # Create your views here.
@@ -29,16 +30,16 @@ def home_view(request):
         request:
     """
 
-    user_info = User_info.objects.get(Portfolio__Portfolio_name=config_name)
-    personlization_info = Personlization.objects.get(Portfolio__Portfolio_name=config_name)
-    social_info = Social_info.objects.get(Portfolio__Portfolio_name=config_name)
+    user_info = get_object_or_404(User_info, Portfolio__Portfolio_name=config_name)
+    personlization_info = get_object_or_404(Personlization, Portfolio__Portfolio_name=config_name)
+    social_info = get_object_or_404(Social_info, Portfolio__Portfolio_name=config_name)
     services_info = Services.objects.all().filter(Portfolio__Portfolio_name="MY PORTFOLIO CONFIG")
     experience_info = Experience.objects.first()
     experience_info_work = Work.objects.all().filter(Experience__User_story=experience_info.User_story)
     experience_info_education = Education.objects.all().filter(Experience__User_story=experience_info.User_story)
     portfolio_info = 4
     profession = [i.strip() for i in user_info.profession.split(',')]
-    contact_info = Contact.objects.all().get(Portfolio__Portfolio_name="MY PORTFOLIO CONFIG")
+    contact_info = get_object_or_404(Contact, Portfolio__Portfolio_name="MY PORTFOLIO CONFIG")
     blog_info = Post.objects.all()
     if request.method == 'GET':
         form = ContactForm()
@@ -100,15 +101,18 @@ def blog_view(request, slug , *args):
     Args:
         request:
     """
-
-    user_info = User_info.objects.get(Portfolio__Portfolio_name=config_name)
-    personlization_info = Personlization.objects.get(Portfolio__Portfolio_name=config_name)
-    social_info = Social_info.objects.get(Portfolio__Portfolio_name=config_name)
-
+    comment_form = CommentForm()
+    user_info = get_object_or_404(User_info, Portfolio__Portfolio_name=config_name)
+    personlization_info = get_object_or_404(Personlization, Portfolio__Portfolio_name=config_name)
+    social_info = get_object_or_404(Social_info, Portfolio__Portfolio_name=config_name)
+    post_info = get_object_or_404(Post, slug=slug)
 
 
 
     context = {'user_info': user_info,
                'social_info': social_info,
-               'personlization_info': personlization_info,}
+               'personlization_info': personlization_info,
+                'post_info':post_info,
+                'comment_form':comment_form,
+               }
     return render(request, "Homepages/blog_single.html", context)

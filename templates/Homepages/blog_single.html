@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load widget_tweaks %}
 {% load static %}
 {% block title %} Home {% endblock %}
 
@@ -91,15 +92,11 @@
                                     <div class="view-scroll">
 
                                         <div class="content-wrap">
-                                            <h2>Pixel Perfect Website Design</h2>
+                                            <h2>{{post_info.Title}}</h2>
                             <div class="spacer20"></div>
                             
 
-                            <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae. Sed ut perspiciatis
-                                unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae.</p>
-
-                            <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae. Sed ut perspiciatis
-                                unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae.</p>
+                            <p>{{post_info.Story}}</p>
                         
 
                         <div id="blog-comment">
@@ -184,17 +181,16 @@
                                 <h3>Leave a Comment</h3>
                                 <div class="spacer-single"></div>
                                 <div class="comment_form_holder">
-                                    <form id="contact_form" class="form-transparent" name="form1" method="post" action="#">
+                                    <form id="contact_form" class="form-transparent" name="form1" method="post">
+                                        {% csrf_token %}
 
-                                        <input type="text" name="name" id="name" placeholder="name" class="form-control" />
+                                        {% render_field comment_form.name class+="form-control" placeholder="Your Name" id="name" %}
+                                        {% comment %} <input type="text" name="name" id="name" placeholder="name" class="form-control" /> {% endcomment %}
 
-                                        <input type="text" name="email" id="email" placeholder="email" class="form-control" />
-                                        <div id="error_email" class="error">Please check your email</div>
-
-                                        <textarea cols="10" rows="10" name="message" id="message" placeholder="comment" class="form-control"></textarea>
-                                        <div id="error_message" class="error">Please check your message</div>
-                                        <div id="mail_success" class="success">Thank you. Your message has been sent.</div>
-                                        <div id="mail_failed" class="error">Error, email not sent</div>
+                                        {% render_field comment_form.email class+="form-control" placeholder="Your Email" id="email" %}
+                                        {% comment %} <input type="text" name="email" id="email" placeholder="email" class="form-control" /> {% endcomment %}
+                                        
+                                        {% render_field comment_form.body class+="form-control" placeholder="Your Message" id="message" %}
 
                                         <div class="spacer-single"></div>
 
