@@ -70,10 +70,15 @@ class Personlization(models.Model):
                                                       width_field=None, max_length=None, null=True)
     Contact_background_picture = models.ImageField(_("contact page bg"), upload_to='images/', height_field=None,
                                                       width_field=None, max_length=None, null=True)
-
+    blog_background_picture = models.ImageField(_("blog page bg"), upload_to='images/', height_field=None,
+                                                      width_field=None, max_length=None, null=True)
+    blog_post_background_picture = models.ImageField(_("blog post page bg"), upload_to=None, height_field=None,
+                                                         width_field=None, max_length=None, null=True)
     Service_background_picture_switch = models.BooleanField(_("service page bg switch"), default=False, null=True)
     Experience_background_picture_switch = models.BooleanField(_("experience page bg switch"), default=False, null=True)
     Contact_background_picture_switch = models.BooleanField(_("contact page bg switch"), default=False, null=True)
+    blog_background_picture_switch = models.BooleanField(_("blog page bg switch"), default=False, null=True)
+    blog_post_background_picture_switch = models.BooleanField(_("blog post page bg switch"), default=False, null=True)
     class Meta:
         verbose_name = ("Personalization")
         verbose_name_plural = ("Personalization")

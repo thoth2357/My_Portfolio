@@ -16,6 +16,10 @@ from blog.models import Post
 
 
 # Create your views here.
+
+#Global variables
+config_name = "MY PORTFOLIO CONFIG"
+
 @csrf_protect
 def home_view(request):
     """
@@ -24,7 +28,6 @@ def home_view(request):
     Args:
         request:
     """
-    config_name = "MY PORTFOLIO CONFIG"
 
     user_info = User_info.objects.get(Portfolio__Portfolio_name=config_name)
     personlization_info = Personlization.objects.get(Portfolio__Portfolio_name=config_name)
@@ -97,6 +100,15 @@ def blog_view(request, slug , *args):
     Args:
         request:
     """
-    print('return value',slug)
-    context = {}
+
+    user_info = User_info.objects.get(Portfolio__Portfolio_name=config_name)
+    personlization_info = Personlization.objects.get(Portfolio__Portfolio_name=config_name)
+    social_info = Social_info.objects.get(Portfolio__Portfolio_name=config_name)
+
+
+
+
+    context = {'user_info': user_info,
+               'social_info': social_info,
+               'personlization_info': personlization_info,}
     return render(request, "Homepages/blog_single.html", context)

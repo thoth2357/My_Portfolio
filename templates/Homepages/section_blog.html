@@ -2,16 +2,17 @@
 <section id="section-blog" class="fluid">
     <div class="container-fluid">
         <div class="row-fluid table">
+            {% if personlization_info.blog_background_picture_switch %}
             <div class="col-md-6 va-top">
                 <div class="img-fx">
-                    <img src="images/misc/3.jpg" alt="">
+                    <img src="{{personlization_info.blog_background_picture.url}}" alt="">
                     <div class="img-url"></div>
                 </div>
             </div>
+            {% else %}{% endif %}
 
             <div class="col-md-6">
                 <div class="content-wrap">
-
                     {% for post in blog_info|slice:"0:10" %}
                     <div class="bloglist s1 item">
                         <div class="post-content">

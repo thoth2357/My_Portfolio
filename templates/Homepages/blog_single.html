@@ -33,12 +33,12 @@
 
                     <nav>
                         <ul id="mainmenu">
-                            <li><a href="{% url 'home_view' %}" class="active"><span>01</span>Home</a></li>
-                            <li><a href="{% url 'home_view' %}"><span>02</span>Services</a></li>
-                            <li><a href="#section-experiences"><span>03</span>Experiences</a></li>
-                            <li><a href="#section-portfolio"><span>05</span>Portfolio</a></li>
-                            <li><a href="#section-blog"><span>06</span>Blog</a></li>
-                            <li><a href="#section-contact"><span>07</span>Contact</a></li>
+                            <li><a href="{% url 'home_view' %}"><span>01</span>Home</a></li>
+                            <li><a href="{% url 'home_view' %}#section-services"><span>02</span>Services</a></li>
+                            <li><a href="{% url 'home_view' %}#section-experiences"><span>03</span>Experiences</a></li>
+                            <li><a href="{% url 'home_view' %}#section-portfolio"><span>05</span>Portfolio</a></li>
+                            <li><a href="{% url 'home_view' %}#section-blog" class="active"><span>06</span>Blog</a></li>
+                            <li><a href="{% url 'home_view' %}#section-contact"><span>07</span>Contact</a></li>
                         </ul>
                     </nav>
 
@@ -78,12 +78,15 @@
                     <section id="section-contact" class="fluid full-height relative">
                         <div class="container-fluid">
                             <div class="row-fluid table">
+                                {% if personlization_info.blog_post_background_picture_switch %}
                                 <div class="col-md-6 va-top">
                                     <div class="img-fx">
-                                        <img src="images/blog/pic-blog-1.jpg" alt="">
+                                        <img src="{{personlization_info.blog_post_background_picture.url}}" alt="">
                                         <div class="img-url to-size img-main"></div>
                                     </div>
                                 </div>
+                                {% else %}{% endif %}
+
                                 <div class="col-md-6 va-top">
                                     <div class="view-scroll">
 
