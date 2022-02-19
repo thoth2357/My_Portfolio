@@ -101,18 +101,21 @@ def blog_view(request, slug , *args):
     Args:
         request:
     """
-    comment_form = CommentForm()
     user_info = get_object_or_404(User_info, Portfolio__Portfolio_name=config_name)
     personlization_info = get_object_or_404(Personlization, Portfolio__Portfolio_name=config_name)
     social_info = get_object_or_404(Social_info, Portfolio__Portfolio_name=config_name)
     post_info = get_object_or_404(Post, slug=slug)
 
-
-
-    context = {'user_info': user_info,
+    if request.method == 'GET':
+        # comment_form = CommentForm()
+        context = {'user_info': user_info,
                'social_info': social_info,
                'personlization_info': personlization_info,
                 'post_info':post_info,
-                'comment_form':comment_form,
+                # 'comment_form':comment_form,
                }
-    return render(request, "Homepages/blog_single.html", context)
+        return render(request, "Homepages/blog_single.html", context)
+    
+    # elif request.method == 'POST':
+    #     comment_form = CommentForm(request.POST)
+    #     if comment_form.is_valid():

@@ -99,7 +99,7 @@
                             <p>{{post_info.Story}}</p>
                         
 
-                        <div id="blog-comment">
+                        {% comment %} <div id="blog-comment">
                             <h3>Comments (5)</h3>
 
                             <div class="spacer-half"></div>
@@ -185,10 +185,8 @@
                                         {% csrf_token %}
 
                                         {% render_field comment_form.name class+="form-control" placeholder="Your Name" id="name" %}
-                                        {% comment %} <input type="text" name="name" id="name" placeholder="name" class="form-control" /> {% endcomment %}
 
                                         {% render_field comment_form.email class+="form-control" placeholder="Your Email" id="email" %}
-                                        {% comment %} <input type="text" name="email" id="email" placeholder="email" class="form-control" /> {% endcomment %}
                                         
                                         {% render_field comment_form.body class+="form-control" placeholder="Your Message" id="message" %}
 
@@ -207,7 +205,7 @@
                         </div>
 
 
-                    </div>
+                    </div> {% endcomment %}
 
                     </div>
                 </div>
