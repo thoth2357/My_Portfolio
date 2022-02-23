@@ -2,10 +2,12 @@
 from email import message
 from operator import contains
 from urllib import request
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, get_list_or_404
 from django.views.decorators.csrf import csrf_protect
 from django.contrib import messages
 from django.core.mail import send_mail
+# from django.shortcuts import render_to_response
+
 
 
 
@@ -33,7 +35,7 @@ def home_view(request):
     user_info = get_object_or_404(User_info, Portfolio__Portfolio_name=config_name)
     personlization_info = get_object_or_404(Personlization, Portfolio__Portfolio_name=config_name)
     social_info = get_object_or_404(Social_info, Portfolio__Portfolio_name=config_name)
-    services_info = Services.objects.all().filter(Portfolio__Portfolio_name=config_name)
+    services_info = get_list_or_404(Services, Portfolio__Portfolio_name=config_name)
     experience_info = Experience.objects.first()
     experience_info_work = Work.objects.all()
     experience_info_education = Education.objects.all()
@@ -119,3 +121,14 @@ def blog_view(request, slug , *args):
     # elif request.method == 'POST':
     #     comment_form = CommentForm(request.POST)
     #     if comment_form.is_valid():
+
+
+def handler404(request, exception):
+    print('request', request)
+    context = {}
+    return render(request, "404.html", context)
+
+# def handler500(request, exception, template_name="503.html"):
+#     response = render_to_response(template_name)
+#     response.status_code = 404
+#     return response

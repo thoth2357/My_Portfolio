@@ -28,3 +28,6 @@ if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 else:
     urlpatterns += staticfiles_urlpatterns()
+
+handler404 = 'portfolio.views.handler404'
+# handler500 = 'portfolio.views.handler500'
