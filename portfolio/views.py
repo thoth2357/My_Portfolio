@@ -33,10 +33,10 @@ def home_view(request):
     user_info = get_object_or_404(User_info, Portfolio__Portfolio_name=config_name)
     personlization_info = get_object_or_404(Personlization, Portfolio__Portfolio_name=config_name)
     social_info = get_object_or_404(Social_info, Portfolio__Portfolio_name=config_name)
-    services_info = Services.objects.all().filter(Portfolio__Portfolio_name="MY PORTFOLIO CONFIG")
+    services_info = Services.objects.all().filter(Portfolio__Portfolio_name=config_name)
     experience_info = Experience.objects.first()
-    experience_info_work = Work.objects.all().filter(Experience__User_story=experience_info.User_story)
-    experience_info_education = Education.objects.all().filter(Experience__User_story=experience_info.User_story)
+    experience_info_work = Work.objects.all()
+    experience_info_education = Education.objects.all()
     portfolio_info = 4
     profession = [i.strip() for i in user_info.profession.split(',')]
     contact_info = get_object_or_404(Contact, Portfolio__Portfolio_name="MY PORTFOLIO CONFIG")

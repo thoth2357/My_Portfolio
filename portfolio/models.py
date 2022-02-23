@@ -9,7 +9,7 @@ from phonenumber_field.modelfields import PhoneNumberField
 
 # Create your models here.
 class Portfolio(models.Model):
-    Portfolio_name = models.CharField(_("portfolio_name/id"), max_length=50, null=True, default='MY PORTFOLIO CONFIG')
+    Portfolio_name = models.CharField(_("portfolio_name/id"), max_length=50, default='MY PORTFOLIO CONFIG')
 
     # User_info = models.OneToOneField("portfolio.User_info", verbose_name=_("user_info"), on_delete=models.CASCADE)
     # Personlization = models.OneToOneField("portfolio.Personlization", verbose_name=_("personalization"), on_delete=models.CASCADE)
@@ -26,7 +26,7 @@ class Portfolio(models.Model):
 
 class User_info(models.Model):
     Portfolio = models.OneToOneField("portfolio.Portfolio", verbose_name=_("User_info"), on_delete=models.CASCADE,
-                                     null=True)
+                                     )
     Fullname = models.CharField(_("FullName"), max_length=50, help_text='Full name to be displayed on portfolio',
                                 default='Enter Full Name')
     Country = CountryField(help_text="Country of Residence", default='Choose Country')
@@ -36,9 +36,9 @@ class User_info(models.Model):
                                     default='Enter phone number')
     profession = models.CharField(_("Professions"), max_length=100,
                                   help_text='professions to be placed on homepage. Use comma to separate profession',
-                                  null=True)
+                                  )
     Curriculum_vitae = models.FileField(_("Curriculum_Vitae"), upload_to='upload/', max_length=100,
-                                        help_text='File upload for CV', null=True)
+                                        help_text='File upload for CV', )
 
     class Meta:
         verbose_name = ("User_Information")
@@ -50,7 +50,7 @@ class User_info(models.Model):
 
 class Personlization(models.Model):
     Portfolio = models.OneToOneField("portfolio.Portfolio", verbose_name=_("User_info"), on_delete=models.CASCADE,
-                                     null=True)
+                                     )
     CHOICES = (
         ('yellow', 'yellow'),
         ('red', 'red'),
@@ -60,25 +60,25 @@ class Personlization(models.Model):
 
     Color_theme = models.CharField(_("Color Theme for Portfolio Colors"), choices=CHOICES, max_length=50,
                                    default='Choose color theme', help_text='Choose the portfolio color scheme')
-    Terminal_icon_blink = models.BooleanField(_("Blink terminal icon"), default=True, null=True)
-    Animation = models.BooleanField(_("animation on homepage"), default=True, null=True)
+    Terminal_icon_blink = models.BooleanField(_("Blink terminal icon"), default=True, )
+    Animation = models.BooleanField(_("animation on homepage"), default=True, )
     Background_picture = models.ImageField(_("home page bg "), upload_to='images/', height_field=None, width_field=None,
-                                           max_length=None, null=True)
+                                           max_length=None, )
     Service_background_picture = models.ImageField(_("service page bg"), upload_to='images/', height_field=None,
-                                                   width_field=None, max_length=None, null=True)
+                                                   width_field=None, max_length=None, )
     Experience_background_picture = models.ImageField(_("experience page bg"), upload_to='images/', height_field=None,
-                                                      width_field=None, max_length=None, null=True)
+                                                      width_field=None, max_length=None, )
     Contact_background_picture = models.ImageField(_("contact page bg"), upload_to='images/', height_field=None,
-                                                      width_field=None, max_length=None, null=True)
+                                                      width_field=None, max_length=None, )
     blog_background_picture = models.ImageField(_("blog page bg"), upload_to='images/', height_field=None,
-                                                      width_field=None, max_length=None, null=True)
+                                                      width_field=None, max_length=None, )
     blog_post_background_picture = models.ImageField(_("blog post page bg"), upload_to=None, height_field=None,
-                                                         width_field=None, max_length=None, null=True)
-    Service_background_picture_switch = models.BooleanField(_("service page bg switch"), default=False, null=True)
-    Experience_background_picture_switch = models.BooleanField(_("experience page bg switch"), default=False, null=True)
-    Contact_background_picture_switch = models.BooleanField(_("contact page bg switch"), default=False, null=True)
-    blog_background_picture_switch = models.BooleanField(_("blog page bg switch"), default=False, null=True)
-    blog_post_background_picture_switch = models.BooleanField(_("blog post page bg switch"), default=False, null=True)
+                                                         width_field=None, max_length=None, )
+    Service_background_picture_switch = models.BooleanField(_("service page bg switch"), default=False, )
+    Experience_background_picture_switch = models.BooleanField(_("experience page bg switch"), default=False, )
+    Contact_background_picture_switch = models.BooleanField(_("contact page bg switch"), default=False, )
+    blog_background_picture_switch = models.BooleanField(_("blog page bg switch"), default=False, )
+    blog_post_background_picture_switch = models.BooleanField(_("blog post page bg switch"), default=False, )
     class Meta:
         verbose_name = ("Personalization")
         verbose_name_plural = ("Personalization")
@@ -89,7 +89,7 @@ class Personlization(models.Model):
 
 class Social_info(models.Model):
     Portfolio = models.OneToOneField("portfolio.Portfolio", verbose_name=_("User_info"), on_delete=models.CASCADE,
-                                     null=True)
+                                     )
     Facebook_url = models.URLField(_("Facebook Account Url"), max_length=200, default='None')
     Instagram_url = models.URLField(_("Instagram Account Url"), max_length=200, default='None')
     Twitter_url = models.URLField(_("Twitter Account Url"), max_length=200, default='None')
@@ -107,7 +107,7 @@ class Social_info(models.Model):
 
 class Services(models.Model):
     Portfolio = models.ForeignKey("portfolio.Portfolio", verbose_name=_("User_info"), on_delete=models.CASCADE,
-                                  null=True)
+                                  )
     Icon_name = models.CharField(_("icon name"), max_length=50, help_text='icon to be used for describing this service')
     Title = models.CharField(_("Title of services"), max_length=60,
                              help_text="title to be used for this particular services")
@@ -122,12 +122,12 @@ class Services(models.Model):
 
 
 class Work(models.Model):
+    Portfolio = models.ForeignKey("portfolio.Portfolio", verbose_name=_("User_info"), on_delete=models.CASCADE,
+                                  )
     Title = models.CharField(_("The Title of Post/Job"), max_length=70)
     Description = models.TextField(_("Description of Job done"))
     Start_date = models.DateField(_("Date Job Started"), auto_now=False, auto_now_add=False)
     End_date = models.DateField(_("Date Job Ended"), auto_now=False, auto_now_add=False)
-    Experience = models.ForeignKey("portfolio.Experience", verbose_name=_("User Experience"), on_delete=models.CASCADE,
-                                   null=True)
 
     class Meta:
         verbose_name = _("Work")
@@ -138,11 +138,12 @@ class Work(models.Model):
 
 
 class Education(models.Model):
+    Portfolio = models.ForeignKey("portfolio.Portfolio", verbose_name=_("User_info"), on_delete=models.CASCADE,
+                                  )
     Year_of_graduation = models.DateField(_("Year of graduation"), auto_now=False, auto_now_add=False)
     Degree_awarded = models.CharField(_("Degree Awarded"), max_length=50)
     Description = models.TextField(_("Description of degree awarded"))
-    Experience = models.ForeignKey("portfolio.Experience", verbose_name=_("User Experience"), on_delete=models.CASCADE,
-                                   null=True)
+    
 
     class Meta:
         verbose_name = _("Education")
@@ -153,6 +154,8 @@ class Education(models.Model):
 
 
 class Experience(models.Model):
+    Portfolio = models.ForeignKey("portfolio.Portfolio", verbose_name=_("User_info"), on_delete=models.CASCADE,
+                                  )
     User_story = models.TextField(_("User Experience Story"))
 
     class Meta:
@@ -172,7 +175,7 @@ class PortfolioExhibit(models.Model):
 
 class Contact(models.Model):
     Portfolio = models.ForeignKey("portfolio.Portfolio", verbose_name=_("User_info"), on_delete=models.CASCADE,
-                                null=True)
+                                )
     E_mail = models.EmailField(_("Contact E-Mail"), max_length=254)
     Phone = PhoneNumberField(_("Phone Number"), help_text="Phone number to display on home page")
     Website = models.URLField(_("Website Link"), max_length=200, help_text="Website Link")
