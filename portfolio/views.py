@@ -14,8 +14,8 @@ from django.core.mail import send_mail
 # import models
 from .models import *
 from .forms import ContactForm
-from blog.models import Post
-from blog.forms import CommentForm
+# from blog.models import Post
+# from blog.forms import CommentForm
 
 
 # Create your views here.
@@ -31,7 +31,6 @@ def home_view(request):
     Args:
         request:
     """
-
     user_info = get_object_or_404(User_info, Portfolio__Portfolio_name=config_name)
     personlization_info = get_object_or_404(Personlization, Portfolio__Portfolio_name=config_name)
     social_info = get_object_or_404(Social_info, Portfolio__Portfolio_name=config_name)
@@ -42,7 +41,7 @@ def home_view(request):
     portfolio_info = 4
     profession = [i.strip() for i in user_info.profession.split(',')]
     contact_info = get_object_or_404(Contact, Portfolio__Portfolio_name="MY PORTFOLIO CONFIG")
-    blog_info = Post.objects.all()
+    # blog_info = Post.objects.all()
     if request.method == 'GET':
         form = ContactForm()
         context = {'user_info': user_info, 'profession': profession,
@@ -54,7 +53,7 @@ def home_view(request):
                 'experience_info_education': experience_info_education,
                 'portfolio_info': portfolio_info,
                 'contact_info':contact_info,
-                'blog_info':blog_info,
+                # 'blog_info':blog_info,
                 'form':form,
                 
                 }
@@ -96,39 +95,37 @@ def home_view(request):
 
 
 
-def blog_view(request, slug , *args):
-    """
-    function based view for blog post details page
+# def blog_view(request, slug , *args):
+#     """
+#     function based view for blog post details page
 
-    Args:
-        request:
-    """
-    user_info = get_object_or_404(User_info, Portfolio__Portfolio_name=config_name)
-    personlization_info = get_object_or_404(Personlization, Portfolio__Portfolio_name=config_name)
-    social_info = get_object_or_404(Social_info, Portfolio__Portfolio_name=config_name)
-    post_info = get_object_or_404(Post, slug=slug)
+#     Args:
+#         request:
+#     """
+#     user_info = get_object_or_404(User_info, Portfolio__Portfolio_name=config_name)
+#     personlization_info = get_object_or_404(Personlization, Portfolio__Portfolio_name=config_name)
+#     social_info = get_object_or_404(Social_info, Portfolio__Portfolio_name=config_name)
+#     post_info = get_object_or_404(Post, slug=slug)
 
-    if request.method == 'GET':
-        # comment_form = CommentForm()
-        context = {'user_info': user_info,
-               'social_info': social_info,
-               'personlization_info': personlization_info,
-                'post_info':post_info,
-                # 'comment_form':comment_form,
-               }
-        return render(request, "Homepages/blog_single.html", context)
+#     if request.method == 'GET':
+#         # comment_form = CommentForm()
+#         context = {'user_info': user_info,
+#                'social_info': social_info,
+#                'personlization_info': personlization_info,
+#                 'post_info':post_info,
+#                 # 'comment_form':comment_form,
+#                }
+#         return render(request, "Homepages/blog_single.html", context)
     
     # elif request.method == 'POST':
     #     comment_form = CommentForm(request.POST)
     #     if comment_form.is_valid():
 
 
-def handler404(request, exception):
-    print('request', request)
+def handler404(request, exception=None):
     context = {}
-    return render(request, "404.html", context)
+    return render(request, "error_404.html", context)
 
-# def handler500(request, exception, template_name="503.html"):
-#     response = render_to_response(template_name)
-#     response.status_code = 404
-#     return response
+def handler500(request, exception=None):
+    context = {}
+    return render(request, "error_404.html", context)

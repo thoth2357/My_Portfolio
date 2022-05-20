@@ -30,4 +30,4 @@ else:
     urlpatterns += staticfiles_urlpatterns()
 
 handler404 = 'portfolio.views.handler404'
-# handler500 = 'portfolio.views.handler500'
+handler500 = 'portfolio.views.handler500'
