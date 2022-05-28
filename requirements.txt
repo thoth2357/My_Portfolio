@@ -1,0 +1,6 @@
+django
+django-countries
+django-phonenumber-field
+django-extensions
+django-widget-tweaks
+python-dotenv
